@@ -20,7 +20,7 @@ jobs:
       - restore_cache:
           key: v1-gradle-cache-{{ checksum "build.gradle" }}
       - run:
-          name: Run tests in parallel
+          name: テストの並列実行
           # Use "./gradlew test" instead if tests are not run in parallel
           command: |
             cd src/test/java
@@ -48,7 +48,7 @@ jobs:
           path: build/test-results/test
           when: always
       - run:
-          name: Assemble JAR
+          name: JARの作成
           command: |
             # Skip this for other nodes
             if [ "$CIRCLE_NODE_INDEX" == 0 ]; then
